@@ -69,7 +69,57 @@ class HUTWaveView: UIView {
         guard let context = UIGraphicsGetCurrentContext() else {return}
         let viewWidth = rect.width
         let radius = viewWidth*0.5
+        let yPosition = (1.0-wavePercentage)*rect.height
+        
         let clippingPath = CGPath(ellipseIn: rect, transform: nil)
+        
+        let path1 = waterWavePath(with: rect).mainPath
+        let path2 = waterWavePath(with: rect).secondPath
+        
+        context.addPath(clippingPath)
+        context.clip()
+    
+        // 水波填充
+        context.saveGState()
+        context.addPath(path2)
+        context.setFillColor(kHexColor("#2fac9b").cgColor)
+        context.fillPath()
+        context.restoreGState()
+        
+        context.saveGState()
+        context.addPath(path1)
+        context.clip()
+        let lineGradient = underLineGradient(startColor: kHexColor("3ad7c4"), endColor: kHexColor("69b836"))
+        context.drawLinearGradient(lineGradient, start: CGPoint(x: radius, y: yPosition-3*A), end: CGPoint(x: radius, y: yPosition+(rect.width-yPosition)), options: .drawsBeforeStartLocation)
+        context.restoreGState()
+        
+        // 边框
+        context.addPath(clippingPath)
+        context.setStrokeColor(UIColor.lightGray.cgColor)
+        context.setLineWidth(2.0)
+        context.strokePath()
+    }
+    
+    // 颜色渐变效果
+    private func underLineGradient(startColor: UIColor, endColor: UIColor) -> CGGradient{
+        
+        let sColor = startColor.withAlphaComponent(1.0)
+        let eColor = endColor.withAlphaComponent(1.0)
+        
+        let colors = [sColor.cgColor, eColor.cgColor]
+        let colorSpace = CGColorSpaceCreateDeviceRGB()
+
+        let colorLocations: [CGFloat] = [0.0, 1.0]
+        return CGGradient(
+          colorsSpace: colorSpace,
+          colors: colors as CFArray,
+          locations: colorLocations
+        )!
+    }
+    
+    // 水波path
+    private func waterWavePath(with rect: CGRect) -> (mainPath: CGPath, secondPath: CGPath) {
+        let viewWidth = rect.width
         
         let path1 = CGMutablePath()
         let path2 = CGMutablePath()
@@ -99,48 +149,7 @@ class HUTWaveView: UIView {
         path2.addLine(to: CGPoint(x: viewWidth, y: rect.height))
         path2.addLine(to: CGPoint(x: 0, y: rect.height))
         path2.addLine(to: CGPoint(x: 0, y: axleYOnScreenHeight2))
-        
-        context.addPath(clippingPath)
-        context.clip()
-    
-        // 水波填充
-        context.saveGState()
-        context.addPath(path2)
-        context.setFillColor(kHexColor("#2fac9b").cgColor)
-        context.fillPath()
-        context.restoreGState()
-        
-        context.saveGState()
-        context.addPath(path1)
-        context.clip()
-        let lineGradient = underLineGradient(startColor: kHexColor("3ad7c4"), endColor: kHexColor("69b836"))
-        context.drawLinearGradient(lineGradient, start: CGPoint(x: radius, y: yPosition-3*A), end: CGPoint(x: radius, y: yPosition+(rect.width-yPosition)), options: .drawsBeforeStartLocation)
-        context.restoreGState()
-        
-        // 边框
-        context.addPath(clippingPath)
-        context.setStrokeColor(UIColor.lightGray.cgColor)
-        context.setLineWidth(2.0)
-        context.strokePath()
-        
-        
-    }
-    
-    // 曲线下的颜色渐变效果
-    private func underLineGradient(startColor: UIColor, endColor: UIColor) -> CGGradient{
-        
-        let sColor = startColor.withAlphaComponent(1.0)
-        let eColor = endColor.withAlphaComponent(1.0)
-        
-        let colors = [sColor.cgColor, eColor.cgColor]
-        let colorSpace = CGColorSpaceCreateDeviceRGB()
-
-        let colorLocations: [CGFloat] = [0.0, 1.0]
-        return CGGradient(
-          colorsSpace: colorSpace,
-          colors: colors as CFArray,
-          locations: colorLocations
-        )!
+        return (path1, path2)
     }
     
 }
