@@ -92,11 +92,6 @@ class HUTWaveView: UIView {
         context.restoreGState()
 
         // 边框
-//        context.addPath(clippingPath)
-//        context.setStrokeColor(UIColor.lightGray.cgColor)
-//        context.setLineWidth(2.0)
-//        context.strokePath()
-        
         drawOutlineShape(with: rect, context: context)
     }
     
