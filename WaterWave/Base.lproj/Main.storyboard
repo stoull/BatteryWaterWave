@@ -17,7 +17,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.20000000000000001" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="4pG-MY-Yg0">
-                                <rect key="frame" x="18" y="572" width="378" height="31"/>
+                                <rect key="frame" x="18" y="452" width="378" height="31"/>
                                 <connections>
                                     <action selector="sliderDidSlide:" destination="BYZ-38-t0r" eventType="valueChanged" id="ral-Sy-4It"/>
                                 </connections>
@@ -26,7 +26,7 @@
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="4pG-MY-Yg0" secondAttribute="bottom" constant="260" id="JTj-4O-PDR"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="4pG-MY-Yg0" secondAttribute="bottom" constant="380" id="JTj-4O-PDR"/>
                             <constraint firstItem="4pG-MY-Yg0" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="NtV-d7-xBA"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="4pG-MY-Yg0" secondAttribute="trailing" constant="20" id="voQ-7s-Vdl"/>
                         </constraints>

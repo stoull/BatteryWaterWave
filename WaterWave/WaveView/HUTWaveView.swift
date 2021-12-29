@@ -45,9 +45,6 @@ class HUTWaveView: UIView {
         }
     }
     
-    var change = false // 用来改变振幅的大小，增加节奏感
-    
-    
     override init(frame: CGRect) {
         super.init(frame: frame)
         self.backgroundColor = UIColor.white
@@ -67,37 +64,40 @@ class HUTWaveView: UIView {
     
     override func draw(_ rect: CGRect) {
         guard let context = UIGraphicsGetCurrentContext() else {return}
+        
         let viewWidth = rect.width
         let radius = viewWidth*0.5
         let yPosition = (1.0-wavePercentage)*rect.height
-        
+
         let clippingPath = CGPath(ellipseIn: rect, transform: nil)
-        
-        let path1 = waterWavePath(with: rect).mainPath
-        let path2 = waterWavePath(with: rect).secondPath
-        
+
         context.addPath(clippingPath)
         context.clip()
-    
+
         // 水波填充
+        let path1 = waterWavePath(with: rect).mainPath
+        let path2 = waterWavePath(with: rect).secondPath
+
         context.saveGState()
         context.addPath(path2)
         context.setFillColor(kHexColor("#2fac9b").cgColor)
         context.fillPath()
         context.restoreGState()
-        
+
         context.saveGState()
         context.addPath(path1)
         context.clip()
         let lineGradient = underLineGradient(startColor: kHexColor("3ad7c4"), endColor: kHexColor("69b836"))
         context.drawLinearGradient(lineGradient, start: CGPoint(x: radius, y: yPosition-3*A), end: CGPoint(x: radius, y: yPosition+(rect.width-yPosition)), options: .drawsBeforeStartLocation)
         context.restoreGState()
-        
+
         // 边框
-        context.addPath(clippingPath)
-        context.setStrokeColor(UIColor.lightGray.cgColor)
-        context.setLineWidth(2.0)
-        context.strokePath()
+//        context.addPath(clippingPath)
+//        context.setStrokeColor(UIColor.lightGray.cgColor)
+//        context.setLineWidth(2.0)
+//        context.strokePath()
+        
+        drawOutlineShape(with: rect, context: context)
     }
     
     // 颜色渐变效果
@@ -152,6 +152,40 @@ class HUTWaveView: UIView {
         return (path1, path2)
     }
     
+    // 画电池外形
+    private func drawOutlineShape(with rect: CGRect, context: CGContext) {
+        let bPath = batteryPath(with: rect)
+        
+        context.addPath(bPath)
+        
+        let padding = 20.0
+        let largerRect = CGRect(origin: CGPoint(x: -padding, y: -padding), size: CGSize(width: rect.size.width + 2*padding, height: rect.size.height + 2*padding))
+//        let largerRect = rect.inset(by: UIEdgeInsets(top: -42.0, left: 42.0, bottom: 42.0, right: 42.0))
+        
+        let largerPath = CGMutablePath()
+        largerPath.addEllipse(in: largerRect)
+        largerPath.addPath(bPath)
+        
+        context.addPath(bPath)
+        context.clip()
+        
+        let shadowColor = kHexColor("BBFFE1").cgColor
+        context.saveGState()
+        context.setShadow(offset: CGSize(width: 0, height: 0.0), blur: 12.0, color: shadowColor)
+        context.setFillColor(shadowColor)
+        context.saveGState()
+        context.addPath(largerPath)
+        context.fillPath(using: .evenOdd)
+        
+        context.restoreGState()
+        context.restoreGState()
+    }
+    
+    private func batteryPath(with rect: CGRect) -> CGPath {
+        let path = CGMutablePath()
+        path.addEllipse(in: rect)
+        return path
+    }
 }
 
 
