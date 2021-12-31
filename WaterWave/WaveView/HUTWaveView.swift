@@ -10,17 +10,19 @@ import UIKit
 class HUTWaveView: UIView {
     let A_max: CGFloat = 7.0
     var A: CGFloat = 7.0 // 振幅
-    var T: CGFloat = 3.0 // 周期
+    var T: CGFloat = 2.0 // 周期
     var K: CGFloat = 270 // 波长
     
     /// 第二个波的参数
     let A2_max: CGFloat = 7.0
     var A2: CGFloat = 7.0    // 振幅
-    var T2: CGFloat = 3.0   // 周期
+    var T2: CGFloat = 2.0   // 周期
     var K2: CGFloat = 270    // 波长
     
     var t: CGFloat = 0.0 // 时间变量
     var dY: CGFloat = 2    // 为与第一个波之间的间距，负数在第一个波的下方（有可能看不到）
+    
+    var shapePath: CGPath!
     
     var wavePercentageStorage: CGFloat = 0.5
     /// 图形在view中的高度百分比，至下往上
@@ -48,8 +50,21 @@ class HUTWaveView: UIView {
     override init(frame: CGRect) {
         super.init(frame: frame)
         self.backgroundColor = UIColor.white
-        Timer.scheduledTimer(timeInterval: 0.03, target: self, selector: #selector(animateWave), userInfo: nil, repeats: true)
+        Timer.scheduledTimer(timeInterval: 0.1, target: self, selector: #selector(animateWave), userInfo: nil, repeats: true)
         wavePercentage = 0.5
+        K = frame.width
+        K2 = frame.width
+        
+        shapePath = getShapePath(with: CGRect(origin: .zero, size: frame.size))
+        
+        // 边框
+        if let bgImage = drawOutlineShape(with: frame.size) {
+            let bgLayer = CALayer()
+            bgLayer.frame = CGRect(origin: .zero, size: frame.size)
+            bgLayer.contents = bgImage.cgImage
+            try? bgImage.pngData()?.write(to: URL(fileURLWithPath: "/Users/hut/Desktop/deeeee.png"))
+            self.layer.insertSublayer(bgLayer, at: 0)
+        }
     }
     
     required init?(coder: NSCoder) {
@@ -73,6 +88,11 @@ class HUTWaveView: UIView {
 
         context.addPath(clippingPath)
         context.clip()
+        
+        // 画背景
+//        context.addPath(shapePath)
+//        context.setFillColor(kHexColorA("FF0000", 0.2).cgColor)
+//        context.fillPath()
 
         // 水波填充
         let path1 = waterWavePath(with: rect).mainPath
@@ -90,9 +110,6 @@ class HUTWaveView: UIView {
         let lineGradient = underLineGradient(startColor: kHexColor("3ad7c4"), endColor: kHexColor("69b836"))
         context.drawLinearGradient(lineGradient, start: CGPoint(x: radius, y: yPosition-3*A), end: CGPoint(x: radius, y: yPosition+(rect.width-yPosition)), options: .drawsBeforeStartLocation)
         context.restoreGState()
-
-        // 边框
-        drawOutlineShape(with: rect, context: context)
     }
     
     // 颜色渐变效果
@@ -147,36 +164,38 @@ class HUTWaveView: UIView {
         return (path1, path2)
     }
     
-    // 画电池外形
-    private func drawOutlineShape(with rect: CGRect, context: CGContext) {
-        let bPath = batteryPath(with: rect)
+    // 画外形
+    private func drawOutlineShape(with size: CGSize) -> UIImage? {
+        let contextSize = CGSize(width: size.width, height: size.height)
+        let opaque = false
+        let scale: CGFloat = 0.0
+        UIGraphicsBeginImageContextWithOptions(contextSize, opaque, scale)
+        guard let context = UIGraphicsGetCurrentContext() else {
+          return nil
+        }
         
-        context.addPath(bPath)
-        
-        let padding = 20.0
-        let largerRect = CGRect(origin: CGPoint(x: -padding, y: -padding), size: CGSize(width: rect.size.width + 2*padding, height: rect.size.height + 2*padding))
-//        let largerRect = rect.inset(by: UIEdgeInsets(top: -42.0, left: 42.0, bottom: 42.0, right: 42.0))
-        
-        let largerPath = CGMutablePath()
-        largerPath.addEllipse(in: largerRect)
-        largerPath.addPath(bPath)
-        
-        context.addPath(bPath)
+        context.addPath(shapePath)
         context.clip()
         
-        let shadowColor = kHexColor("BBFFE1").cgColor
-        context.saveGState()
-        context.setShadow(offset: CGSize(width: 0, height: 0.0), blur: 12.0, color: shadowColor)
-        context.setFillColor(shadowColor)
-        context.saveGState()
-        context.addPath(largerPath)
-        context.fillPath(using: .evenOdd)
+        // 画背景
         
-        context.restoreGState()
-        context.restoreGState()
+        context.addPath(shapePath)
+        context.setStrokeColor(kHexColor("BBFFE1").cgColor)
+        context.setLineWidth(6.0)
+        context.strokePath()
+        
+        context.setStrokeColor(kHexColor("BBFFE1").cgColor)
+        context.setShadow(offset: CGSize.zero, blur: 12.0, color: kHexColor("AFDABC").cgColor)
+        context.setBlendMode(.multiply)
+        context.addPath(shapePath)
+        context.strokePath()
+
+        let image = UIGraphicsGetImageFromCurrentImageContext()
+        UIGraphicsEndImageContext()
+        return image
     }
     
-    private func batteryPath(with rect: CGRect) -> CGPath {
+    private func getShapePath(with rect: CGRect) -> CGPath {
         let path = CGMutablePath()
         path.addEllipse(in: rect)
         return path
