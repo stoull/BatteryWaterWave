@@ -202,21 +202,6 @@ class HUTWaveView: UIView {
     }
 }
 
-
-func kRGBAColor(_ r: CGFloat,_ g: CGFloat,_ b: CGFloat,_ a: CGFloat) -> UIColor {
-    return UIColor.init(red: r, green: g, blue: b, alpha: a)
-}
-func kRGBColor(_ r: CGFloat,_ g: CGFloat,_ b: CGFloat) -> UIColor {
-    return UIColor.init(red: r, green: g, blue: b, alpha: 1.0)
-}
-func kHexColorA(_ HexString: String,_ a: CGFloat) ->UIColor {
-    return UIColor.colorWith(hexString: HexString, alpha: a)
-}
-
-func kHexColor(_ HexString: String) ->UIColor {
-    return UIColor.colorWith(hexString: HexString)
-}
-
 // MARK: - 颜色相关
 extension UIColor {
     // MARK: - Convert hex string to a UIColor instance

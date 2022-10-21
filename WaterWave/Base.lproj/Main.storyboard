@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19455" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19454"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -16,28 +16,106 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.20000000000000001" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="4pG-MY-Yg0">
-                                <rect key="frame" x="18" y="452" width="378" height="31"/>
-                                <connections>
-                                    <action selector="sliderDidSlide:" destination="BYZ-38-t0r" eventType="valueChanged" id="ral-Sy-4It"/>
-                                </connections>
-                            </slider>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Yss-D4-goK" userLabel="DashProgressView">
+                                <rect key="frame" x="0.0" y="44" width="414" height="400"/>
+                                <subviews>
+                                    <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.80000000000000004" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="CRU-WI-siP">
+                                        <rect key="frame" x="18" y="310" width="378" height="31"/>
+                                        <connections>
+                                            <action selector="dashProgressSliderDidChange:" destination="BYZ-38-t0r" eventType="valueChanged" id="cfA-lt-jg4"/>
+                                        </connections>
+                                    </slider>
+                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" spacing="2" translatesAutoresizingMaskIntoConstraints="NO" id="ECj-ou-Jrv">
+                                        <rect key="frame" x="20" y="360" width="374" height="40"/>
+                                        <subviews>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ka0-La-Qcb">
+                                                <rect key="frame" x="0.0" y="0.0" width="87.5" height="40"/>
+                                                <state key="normal" title="Button"/>
+                                                <buttonConfiguration key="configuration" style="plain" title="充电"/>
+                                                <connections>
+                                                    <action selector="chargingButtonDidClick:" destination="BYZ-38-t0r" eventType="touchUpInside" id="OgX-5u-7gL"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dQe-r1-zte">
+                                                <rect key="frame" x="89.5" y="0.0" width="98" height="40"/>
+                                                <state key="normal" title="Button"/>
+                                                <buttonConfiguration key="configuration" style="plain" title="速度-"/>
+                                                <connections>
+                                                    <action selector="speedMinus:" destination="BYZ-38-t0r" eventType="touchUpInside" id="RuL-Ak-KyJ"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="U3q-8k-WRy">
+                                                <rect key="frame" x="189.5" y="0.0" width="101" height="40"/>
+                                                <state key="normal" title="Button"/>
+                                                <buttonConfiguration key="configuration" style="plain" title="速度+"/>
+                                                <connections>
+                                                    <action selector="speedAdd:" destination="BYZ-38-t0r" eventType="touchUpInside" id="v91-XE-OlO"/>
+                                                </connections>
+                                            </button>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="speed" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="trL-zu-BSw">
+                                                <rect key="frame" x="292.5" y="0.0" width="81.5" height="40"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="40" id="NVr-2N-B7u"/>
+                                        </constraints>
+                                    </stackView>
+                                </subviews>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstItem="CRU-WI-siP" firstAttribute="leading" secondItem="Yss-D4-goK" secondAttribute="leading" constant="20" symbolic="YES" id="1ao-Uf-b12"/>
+                                    <constraint firstAttribute="height" constant="400" id="506-du-ndd"/>
+                                    <constraint firstAttribute="trailing" secondItem="CRU-WI-siP" secondAttribute="trailing" constant="20" symbolic="YES" id="IX3-V3-DqV"/>
+                                    <constraint firstAttribute="bottom" secondItem="CRU-WI-siP" secondAttribute="bottom" constant="60" id="Iad-kp-aIT"/>
+                                    <constraint firstItem="ECj-ou-Jrv" firstAttribute="leading" secondItem="Yss-D4-goK" secondAttribute="leading" constant="20" id="UPW-fP-2F6"/>
+                                    <constraint firstAttribute="trailing" secondItem="ECj-ou-Jrv" secondAttribute="trailing" constant="20" id="dC8-1y-otC"/>
+                                    <constraint firstAttribute="bottom" secondItem="ECj-ou-Jrv" secondAttribute="bottom" id="ey5-Bj-jXF"/>
+                                </constraints>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zGn-zi-caq" userLabel="WaterWaveView">
+                                <rect key="frame" x="0.0" y="564" width="414" height="240"/>
+                                <subviews>
+                                    <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.20000000000000001" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="4pG-MY-Yg0">
+                                        <rect key="frame" x="18" y="190" width="378" height="31"/>
+                                        <connections>
+                                            <action selector="sliderDidSlide:" destination="BYZ-38-t0r" eventType="valueChanged" id="ral-Sy-4It"/>
+                                        </connections>
+                                    </slider>
+                                </subviews>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="240" id="Djb-ZI-aOs"/>
+                                    <constraint firstAttribute="bottom" secondItem="4pG-MY-Yg0" secondAttribute="bottom" constant="20" id="Mhu-Kb-fPI"/>
+                                    <constraint firstItem="4pG-MY-Yg0" firstAttribute="leading" secondItem="zGn-zi-caq" secondAttribute="leading" constant="20" symbolic="YES" id="QZp-AO-tSI"/>
+                                    <constraint firstAttribute="trailing" secondItem="4pG-MY-Yg0" secondAttribute="trailing" constant="20" symbolic="YES" id="VeW-9r-qgk"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="4pG-MY-Yg0" secondAttribute="bottom" constant="380" id="JTj-4O-PDR"/>
-                            <constraint firstItem="4pG-MY-Yg0" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="NtV-d7-xBA"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="4pG-MY-Yg0" secondAttribute="trailing" constant="20" id="voQ-7s-Vdl"/>
+                            <constraint firstItem="zGn-zi-caq" firstAttribute="top" secondItem="Yss-D4-goK" secondAttribute="bottom" constant="120" id="60q-ky-p5N"/>
+                            <constraint firstItem="Yss-D4-goK" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="9D3-rA-Jy6"/>
+                            <constraint firstItem="zGn-zi-caq" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="QTc-1s-zbj"/>
+                            <constraint firstItem="Yss-D4-goK" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="XN4-kh-ImD"/>
+                            <constraint firstItem="zGn-zi-caq" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="gL0-rh-aO0"/>
+                            <constraint firstItem="Yss-D4-goK" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="wNW-6P-DS6"/>
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="slider" destination="4pG-MY-Yg0" id="nbc-ad-FLd"/>
+                        <outlet property="contianer_1" destination="Yss-D4-goK" id="9oM-k7-noq"/>
+                        <outlet property="contianer_2" destination="zGn-zi-caq" id="SXt-SJ-XBc"/>
+                        <outlet property="slider_1" destination="CRU-WI-siP" id="BgV-Kn-7ub"/>
+                        <outlet property="slider_2" destination="4pG-MY-Yg0" id="5As-5Q-obj"/>
+                        <outlet property="speedLabel" destination="trL-zu-BSw" id="ulF-vh-a4Q"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="48" y="102"/>
+            <point key="canvasLocation" x="47.826086956521742" y="101.78571428571428"/>
         </scene>
     </scenes>
     <resources>
