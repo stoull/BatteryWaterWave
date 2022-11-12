@@ -8,7 +8,8 @@
 import UIKit
 
 class ViewController: UIViewController {
-
+    @IBOutlet weak var activityView: UIView!
+    
     @IBOutlet weak var contianer_1: UIView!
     @IBOutlet weak var contianer_2: UIView!
 
@@ -18,6 +19,7 @@ class ViewController: UIViewController {
     
     var waveView: HUTWaveView!
     var dashProgress: HUTDashProgress!
+    @IBOutlet weak var spreadAnimationView: HUTSpreadAnimationView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -31,7 +33,7 @@ class ViewController: UIViewController {
         let screenSize = UIScreen.main.bounds.size
         
         // 显示 半圆形dash进度图
-        dashProgress = HUTDashProgress(frame: CGRect(origin: CGPoint(x: 0.0, y: 100.0), size: CGSize(width: UIScreen.main.bounds.size.width, height: 150)))
+        dashProgress = HUTDashProgress(frame: CGRect(origin: CGPoint(x: 0.0, y: 30.0), size: CGSize(width: UIScreen.main.bounds.size.width, height: 150)))
         contianer_1.addSubview(dashProgress)
         
         speedLabel.text = "1.4s"
@@ -42,6 +44,10 @@ class ViewController: UIViewController {
         waveView = HUTWaveView(frame: CGRect(origin: originPoint, size: waveSize))
         contianer_2.insertSubview(waveView, at: 0)
         slider_2.setValue(0.5, animated: true)
+        
+        activityView.addSubview(HUTActivity(frame: CGRect(origin: .zero, size: CGSize(width: 60.0, height: 60.0))))
+        
+        spreadAnimationView.startAnimation()
     }
     
     @IBAction func sliderDidSlide(_ sender: UISlider) {

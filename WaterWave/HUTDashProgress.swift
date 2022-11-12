@@ -54,7 +54,7 @@ class HUTDashProgress: UIView {
     // 当前动画所到的位置
     private var animatingCurrentDeg: CGFloat = -240
     // 动画走完整个弧度的时间
-    private var animationDuraitonStorage: Double = 1.4
+    private var animationDuraitonStorage: Double = 1.5
     var animationDuraiton: Double {
         get {return animationDuraitonStorage}
         set {

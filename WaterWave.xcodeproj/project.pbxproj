@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0ADE82DB291FC60100B4D7BD /* HUTSpreadAnimationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0ADE82DA291FC60100B4D7BD /* HUTSpreadAnimationView.swift */; };
+		0ADE82DD291FC65700B4D7BD /* HUTSpreadCircle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0ADE82DC291FC65700B4D7BD /* HUTSpreadCircle.swift */; };
 		C969B7AB277C01F20041845D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C969B7AA277C01F20041845D /* AppDelegate.swift */; };
 		C969B7AD277C01F20041845D /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C969B7AC277C01F20041845D /* SceneDelegate.swift */; };
 		C969B7AF277C01F20041845D /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C969B7AE277C01F20041845D /* ViewController.swift */; };
@@ -16,9 +18,12 @@
 		C969B7C0277C021E0041845D /* HUTWaveView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C969B7BF277C021E0041845D /* HUTWaveView.swift */; };
 		C9885E382902276D006E8DF7 /* HUTDashProgress.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9885E372902276D006E8DF7 /* HUTDashProgress.swift */; };
 		C9885E3A290227C0006E8DF7 /* HUTHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9885E39290227C0006E8DF7 /* HUTHelper.swift */; };
+		C9AF7F52290D460A00C74480 /* HUTActivity.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9AF7F51290D460A00C74480 /* HUTActivity.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0ADE82DA291FC60100B4D7BD /* HUTSpreadAnimationView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HUTSpreadAnimationView.swift; sourceTree = "<group>"; };
+		0ADE82DC291FC65700B4D7BD /* HUTSpreadCircle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HUTSpreadCircle.swift; sourceTree = "<group>"; };
 		C969B7A7277C01F20041845D /* WaterWave.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WaterWave.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C969B7AA277C01F20041845D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C969B7AC277C01F20041845D /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -30,6 +35,7 @@
 		C969B7BF277C021E0041845D /* HUTWaveView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HUTWaveView.swift; sourceTree = "<group>"; };
 		C9885E372902276D006E8DF7 /* HUTDashProgress.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HUTDashProgress.swift; sourceTree = "<group>"; };
 		C9885E39290227C0006E8DF7 /* HUTHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HUTHelper.swift; sourceTree = "<group>"; };
+		C9AF7F51290D460A00C74480 /* HUTActivity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HUTActivity.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -63,6 +69,9 @@
 			isa = PBXGroup;
 			children = (
 				C9885E39290227C0006E8DF7 /* HUTHelper.swift */,
+				C9AF7F51290D460A00C74480 /* HUTActivity.swift */,
+				0ADE82DA291FC60100B4D7BD /* HUTSpreadAnimationView.swift */,
+				0ADE82DC291FC65700B4D7BD /* HUTSpreadCircle.swift */,
 				C9885E372902276D006E8DF7 /* HUTDashProgress.swift */,
 				C969B7BE277C02010041845D /* WaveView */,
 				C969B7AA277C01F20041845D /* AppDelegate.swift */,
@@ -155,12 +164,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C9AF7F52290D460A00C74480 /* HUTActivity.swift in Sources */,
 				C969B7C0277C021E0041845D /* HUTWaveView.swift in Sources */,
 				C969B7AF277C01F20041845D /* ViewController.swift in Sources */,
 				C969B7AB277C01F20041845D /* AppDelegate.swift in Sources */,
+				0ADE82DB291FC60100B4D7BD /* HUTSpreadAnimationView.swift in Sources */,
 				C9885E382902276D006E8DF7 /* HUTDashProgress.swift in Sources */,
 				C969B7AD277C01F20041845D /* SceneDelegate.swift in Sources */,
 				C9885E3A290227C0006E8DF7 /* HUTHelper.swift in Sources */,
+				0ADE82DD291FC65700B4D7BD /* HUTSpreadCircle.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
