@@ -15,16 +15,49 @@ final class HUTSpreadAnimationView: UIView {
     var centerImageViewPercentage: CGFloat = 0.2
     var centerCircelImageViewPercentage: CGFloat = 0.3
     
-    var shrinkDuration: CGFloat = 1.0
-    var spreadDuration: CGFloat = 5.0
+    private var shrinkDurationStorage: CGFloat = 1.0
+    private var spreadDurationStorage: CGFloat = 5.0
+    
+    var shrinkDuration: CGFloat {
+        get { return shrinkDurationStorage }
+        set {
+            shrinkDurationStorage = newValue
+            self.startAnimation()
+        }
+    }
+    
+    var spreadDuration: CGFloat {
+        get { return spreadDurationStorage }
+        set {
+            spreadDurationStorage = newValue
+            self.setupSpreadAnimationTimer()
+        }
+    }
+    
+    // From the center to the edge
+//    private var spreadGradientColors:[CGColor] = [UIColor.blue.cgColor, UIColor.red.cgColor]
+    private var spreadGradientColorsStorage:[CGColor] = [kHexColorA("1ED7FF", 1.0).cgColor, kHexColorA("1ED7FF", 0.0).cgColor]
+    
+    public var spreadGradientColors:[CGColor] {
+        get { return spreadGradientColorsStorage }
+        set {
+            spreadGradientColorsStorage = newValue
+            self.spreadGradientLayer.colors = newValue
+        }
+    }
     
     private var spreadGradientLayer: CAGradientLayer!
     private var spreadCircePathlLayer: CAShapeLayer!
     
-    // From the center to the edge
-//    private var spreadGradientColors:[CGColor] = [UIColor.blue.cgColor, UIColor.red.cgColor]
-    private var spreadGradientColors:[CGColor] = [kHexColorA("1ED7FF", 1.0).cgColor, kHexColorA("1ED7FF", 0.0).cgColor]
-    private var strokeLineWidth: CGFloat = 3.0
+    private var strokeLineWidthStorage: CGFloat = 3.0
+    var strokeLineWidth: CGFloat {
+        get { return strokeLineWidthStorage }
+        set {
+            strokeLineWidthStorage = newValue
+            spreadCircePathlLayer.lineWidth = newValue
+            self.validViewShowRadius = self.viewHalfSize - newValue*0.5
+        }
+    }
 
     private var viewHalfSize : CGFloat = 0.0
     private var validViewShowRadius: CGFloat = 0.0
@@ -55,14 +88,38 @@ final class HUTSpreadAnimationView: UIView {
     let kSpreadAnimationId = "kSpreadAnimation"
     
     func startAnimation() {
+        self.setupShrinkCycleAnimationTimer()
+    }
+    
+    func stopAnimation() {
+        shrinkCycleTimer?.invalidate()
+        shrinkCycleTimer = nil
+    }
+    
+    
+    @objc private func startAllAnimations() {
         self.startShrinkAnimation()
+        self.addANewSpreadAnimation()
         
         if spreadGradientLayer.isHidden == true {
             spreadGradientLayer.isHidden = false
         }
     }
     
-    func startShrinkAnimation() {
+    var shrinkCycleTimer: Timer?
+    func setupShrinkCycleAnimationTimer() {
+        shrinkCycleTimer?.invalidate()
+        shrinkCycleTimer = nil
+        
+        shrinkCycleTimer = Timer.scheduledTimer(timeInterval: shrinkDurationStorage, target: self, selector: #selector(startAllAnimations), userInfo: nil, repeats: true)
+        shrinkCycleTimer?.fire()
+    }
+    
+
+    private func startShrinkAnimation() {
+        centerImageView.layer.removeAllAnimations()
+        centerCircelImageView.layer.removeAllAnimations()
+        
         let shrinkAnimation = createKeyFrameAnimation(keyPath: "transform.scale", values: [1.0, 0.8, 1.0], keytimes: [0.0, 0.5, 1.0])
         let opacityAnimation = createKeyFrameAnimation(keyPath: "opacity", values: [1.0, 0.2, 1.0], keytimes: [0.0, 0.5, 1.0])
         
@@ -224,14 +281,12 @@ extension HUTSpreadAnimationView: CAAnimationDelegate{
     func animationDidStart(_ anim: CAAnimation) {
         if let animId = anim.value(forKey: "animationID") as? String,
            animId == kShrinkAnimationId {
-            self.addANewSpreadAnimation()
         }
     }
     
     func animationDidStop(_ anim: CAAnimation, finished flag: Bool) {
         if let animId = anim.value(forKey: "animationID") as? String,
            animId == kShrinkAnimationId {
-            self.startAnimation()
         } else {
             
         }
