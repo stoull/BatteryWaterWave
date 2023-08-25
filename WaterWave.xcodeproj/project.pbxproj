@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0A9444002A98448A000B667B /* HUTBatterySOCViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A9443FF2A98448A000B667B /* HUTBatterySOCViewController.swift */; };
+		0AC824582A98347300591AA8 /* HUTBatterySOCView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AC824572A98347300591AA8 /* HUTBatterySOCView.swift */; };
 		0ADE82DB291FC60100B4D7BD /* HUTSpreadAnimationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0ADE82DA291FC60100B4D7BD /* HUTSpreadAnimationView.swift */; };
 		0ADE82DD291FC65700B4D7BD /* HUTSpreadCircle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0ADE82DC291FC65700B4D7BD /* HUTSpreadCircle.swift */; };
 		C969B7AB277C01F20041845D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C969B7AA277C01F20041845D /* AppDelegate.swift */; };
@@ -22,6 +24,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0A9443FF2A98448A000B667B /* HUTBatterySOCViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HUTBatterySOCViewController.swift; sourceTree = "<group>"; };
+		0AC824572A98347300591AA8 /* HUTBatterySOCView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HUTBatterySOCView.swift; sourceTree = "<group>"; };
 		0ADE82DA291FC60100B4D7BD /* HUTSpreadAnimationView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HUTSpreadAnimationView.swift; sourceTree = "<group>"; };
 		0ADE82DC291FC65700B4D7BD /* HUTSpreadCircle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HUTSpreadCircle.swift; sourceTree = "<group>"; };
 		C969B7A7277C01F20041845D /* WaterWave.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WaterWave.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -73,10 +77,12 @@
 				0ADE82DA291FC60100B4D7BD /* HUTSpreadAnimationView.swift */,
 				0ADE82DC291FC65700B4D7BD /* HUTSpreadCircle.swift */,
 				C9885E372902276D006E8DF7 /* HUTDashProgress.swift */,
+				0AC824572A98347300591AA8 /* HUTBatterySOCView.swift */,
 				C969B7BE277C02010041845D /* WaveView */,
 				C969B7AA277C01F20041845D /* AppDelegate.swift */,
 				C969B7AC277C01F20041845D /* SceneDelegate.swift */,
 				C969B7AE277C01F20041845D /* ViewController.swift */,
+				0A9443FF2A98448A000B667B /* HUTBatterySOCViewController.swift */,
 				C969B7B0277C01F20041845D /* Main.storyboard */,
 				C969B7B3277C01F60041845D /* Assets.xcassets */,
 				C969B7B5277C01F60041845D /* LaunchScreen.storyboard */,
@@ -167,8 +173,10 @@
 				C9AF7F52290D460A00C74480 /* HUTActivity.swift in Sources */,
 				C969B7C0277C021E0041845D /* HUTWaveView.swift in Sources */,
 				C969B7AF277C01F20041845D /* ViewController.swift in Sources */,
+				0A9444002A98448A000B667B /* HUTBatterySOCViewController.swift in Sources */,
 				C969B7AB277C01F20041845D /* AppDelegate.swift in Sources */,
 				0ADE82DB291FC60100B4D7BD /* HUTSpreadAnimationView.swift in Sources */,
+				0AC824582A98347300591AA8 /* HUTBatterySOCView.swift in Sources */,
 				C9885E382902276D006E8DF7 /* HUTDashProgress.swift in Sources */,
 				C969B7AD277C01F20041845D /* SceneDelegate.swift in Sources */,
 				C9885E3A290227C0006E8DF7 /* HUTHelper.swift in Sources */,
@@ -321,7 +329,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = ZXPXG49X5L;
+				DEVELOPMENT_TEAM = DFM3SPMA69;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = WaterWave/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -334,7 +342,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.hut.test.WaterWave;
+				PRODUCT_BUNDLE_IDENTIFIER = com.growatt.hut.test;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -349,7 +357,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = ZXPXG49X5L;
+				DEVELOPMENT_TEAM = DFM3SPMA69;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = WaterWave/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -362,7 +370,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.hut.test.WaterWave;
+				PRODUCT_BUNDLE_IDENTIFIER = com.growatt.hut.test;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;

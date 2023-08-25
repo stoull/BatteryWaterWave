@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21507" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -17,7 +18,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Lku-MF-o0t" userLabel="SpreadAnimationView">
-                                <rect key="frame" x="0.0" y="64" width="414" height="160"/>
+                                <rect key="frame" x="0.0" y="68" width="414" height="160"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0K7-qr-Ki3" userLabel="SpreadAnimation" customClass="HUTSpreadAnimationView" customModule="WaterWave" customModuleProvider="target">
                                         <rect key="frame" x="127" y="0.0" width="160" height="160"/>
@@ -36,7 +37,7 @@
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Yss-D4-goK" userLabel="DashProgressView">
-                                <rect key="frame" x="0.0" y="224" width="414" height="260"/>
+                                <rect key="frame" x="0.0" y="228" width="414" height="260"/>
                                 <subviews>
                                     <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.80000000000000004" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="CRU-WI-siP">
                                         <rect key="frame" x="18" y="170" width="378" height="31"/>
@@ -48,7 +49,7 @@
                                         <rect key="frame" x="20" y="220" width="374" height="40"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ka0-La-Qcb">
-                                                <rect key="frame" x="0.0" y="0.0" width="87.5" height="40"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="89" height="40"/>
                                                 <state key="normal" title="Button"/>
                                                 <buttonConfiguration key="configuration" style="plain" title="充电"/>
                                                 <connections>
@@ -56,7 +57,7 @@
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dQe-r1-zte">
-                                                <rect key="frame" x="89.5" y="0.0" width="98" height="40"/>
+                                                <rect key="frame" x="91" y="0.0" width="100.5" height="40"/>
                                                 <state key="normal" title="Button"/>
                                                 <buttonConfiguration key="configuration" style="plain" title="速度-"/>
                                                 <connections>
@@ -64,7 +65,7 @@
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="U3q-8k-WRy">
-                                                <rect key="frame" x="189.5" y="0.0" width="101" height="40"/>
+                                                <rect key="frame" x="193.5" y="0.0" width="104.5" height="40"/>
                                                 <state key="normal" title="Button"/>
                                                 <buttonConfiguration key="configuration" style="plain" title="速度+"/>
                                                 <connections>
@@ -72,7 +73,7 @@
                                                 </connections>
                                             </button>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="speed" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="trL-zu-BSw">
-                                                <rect key="frame" x="292.5" y="0.0" width="81.5" height="40"/>
+                                                <rect key="frame" x="300" y="0.0" width="74" height="40"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
@@ -82,7 +83,7 @@
                                             <constraint firstAttribute="height" constant="40" id="NVr-2N-B7u"/>
                                         </constraints>
                                     </stackView>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ceV-3U-Y5u">
+                                    <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ceV-3U-Y5u">
                                         <rect key="frame" x="8" y="0.0" width="60" height="60"/>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                         <constraints>
@@ -105,7 +106,7 @@
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zGn-zi-caq" userLabel="WaterWaveView">
-                                <rect key="frame" x="0.0" y="504" width="414" height="220"/>
+                                <rect key="frame" x="0.0" y="508" width="414" height="220"/>
                                 <subviews>
                                     <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.20000000000000001" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="4pG-MY-Yg0">
                                         <rect key="frame" x="38" y="190" width="338" height="31"/>
@@ -122,6 +123,14 @@
                                     <constraint firstAttribute="trailing" secondItem="4pG-MY-Yg0" secondAttribute="trailing" constant="40" id="VeW-9r-qgk"/>
                                 </constraints>
                             </view>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FvA-bE-niw">
+                                <rect key="frame" x="272.5" y="827.5" width="121.5" height="34.5"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="ShowBattery"/>
+                                <connections>
+                                    <segue destination="3aM-cu-j8c" kind="show" id="0Tt-9h-PLB"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -129,7 +138,9 @@
                             <constraint firstItem="Lku-MF-o0t" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="20" id="55E-lE-XN9"/>
                             <constraint firstItem="zGn-zi-caq" firstAttribute="top" secondItem="Yss-D4-goK" secondAttribute="bottom" constant="20" id="60q-ky-p5N"/>
                             <constraint firstItem="Yss-D4-goK" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="9D3-rA-Jy6"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="FvA-bE-niw" secondAttribute="trailing" constant="20" id="EgV-Fh-HXh"/>
                             <constraint firstItem="Lku-MF-o0t" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="Esq-pg-Fhj"/>
+                            <constraint firstItem="FvA-bE-niw" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="GaU-1K-osH"/>
                             <constraint firstItem="Lku-MF-o0t" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="KOO-vr-beC"/>
                             <constraint firstItem="zGn-zi-caq" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="QTc-1s-zbj"/>
                             <constraint firstItem="Yss-D4-goK" firstAttribute="top" secondItem="Lku-MF-o0t" secondAttribute="bottom" id="bIS-M9-NjB"/>
@@ -150,6 +161,39 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="47.826086956521742" y="101.78571428571428"/>
+        </scene>
+        <!--BatterySOC View Controller-->
+        <scene sceneID="ekz-1j-BgI">
+            <objects>
+                <viewController id="3aM-cu-j8c" customClass="HUTBatterySOCViewController" customModule="WaterWave" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="BOx-f3-Ad2">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="838"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="JjT-d9-CdZ" customClass="HUTBatterySOCView" customModule="WaterWave" customModuleProvider="target">
+                                <rect key="frame" x="57" y="119" width="300" height="600"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="300" id="4Sp-7e-2hA"/>
+                                    <constraint firstAttribute="height" constant="600" id="O6b-Ee-rgz"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="Re8-CX-AkL"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="JjT-d9-CdZ" firstAttribute="centerY" secondItem="BOx-f3-Ad2" secondAttribute="centerY" id="Jbg-Wi-CeT"/>
+                            <constraint firstItem="JjT-d9-CdZ" firstAttribute="centerX" secondItem="BOx-f3-Ad2" secondAttribute="centerX" id="QYb-dc-RbZ"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="r1A-Id-ybU"/>
+                    <connections>
+                        <outlet property="batteryView" destination="JjT-d9-CdZ" id="4g7-Ad-JZn"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Rix-Mb-C4d" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1588" y="102"/>
         </scene>
     </scenes>
     <resources>
